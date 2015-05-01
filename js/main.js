@@ -18,3 +18,10 @@ function loadImage (item) {
 	};
 	images[item].src = 'img/' + name + '.png';
 }
+
+function resourceLoaded() {
+	numResourcesLoaded += 1;
+	if (numResourcesLoaded === totalResources) {
+		setInterval(redraw, 1000 / fps);
+	}
+}
