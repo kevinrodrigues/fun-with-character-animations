@@ -18,7 +18,7 @@ function loadImage (item) {
 	};
 	images[item].src = 'img/' + name + '.png';
 }
-
+//load our resources..
 function resourceLoaded() {
 	numResourcesLoaded += 1;
 	if (numResourcesLoaded === totalResources) {
