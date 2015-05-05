@@ -1,7 +1,8 @@
 var images = {},
 		totalResources = 6,
 		numResourcesLoaded = 0,
-		fps = 30;
+		fps = 30,
+		context = document.getElementById('canvas').getContext('2d');
 
 loadImage('leftArm');
 loadImage('legs');
