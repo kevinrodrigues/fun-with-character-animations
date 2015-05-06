@@ -1,10 +1,10 @@
 var images = {},
-		totalResources = 6,
-		numResourcesLoaded = 0,
-		fps = 30,
-		context = document.getElementById('canvas').getContext('2d'),
-		charX = 245,
-		charY = 185;
+	totalResources = 6,
+	numResourcesLoaded = 0,
+	fps = 30,
+	context = document.getElementById('canvas').getContext('2d'),
+	charX = 245,
+	charY = 185;
 
 loadImage('leftArm');
 loadImage('legs');
@@ -13,28 +13,38 @@ loadImage('rightArm');
 loadImage('head');
 loadImage('hair');
 
-//load in images
-function loadImage (item) {
-	images[item] = new Image();
-	images[item].onLoad = function () {
-		resourceLoaded();
-	};
-	images[item].src = 'img/' + name + '.png';
+function loadImage(name) {
+
+  images[name] = new Image();
+  images[name].onload = function() { 
+      resourceLoaded();
+  };
+
+  images[name].src = 'img/' + name + '.png';
 }
 
-//load our resources and redraw..
+
+
 function resourceLoaded() {
-	numResourcesLoaded += 1;
-	if (numResourcesLoaded === totalResources) {
-		setInterval(redraw, 1000 / fps);
-	}
+
+  numResourcesLoaded += 1;
+  if(numResourcesLoaded === totalResources) {
+    setInterval(redraw, 1000 / fps);
+  }
 }
 
-//redraw canvas..
+
 function redraw() {
-	var x = charX,
-		y = charY;
-		
+
+  var x = charX;
+  var y = charY;
+
+  context.width = context.width; // clears the canvas 
+                      
+  context.drawImage(images.leftArm, x + 40, y - 42);
+  context.drawImage(images.legs, x, y);
+  context.drawImage(images.torso, x, y - 50);
+  context.drawImage(images.rightArm, x - 15, y - 42);
+  context.drawImage(images.head, x - 10, y - 125);
+  context.drawImage(images.hair, x - 37, y - 138);
 }
-
-
