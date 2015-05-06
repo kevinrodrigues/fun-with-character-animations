@@ -47,4 +47,39 @@ function redraw() {
   context.drawImage(images.rightArm, x - 15, y - 42);
   context.drawImage(images.head, x - 10, y - 125);
   context.drawImage(images.hair, x - 37, y - 138);
+
+  drawEllipse(x + 47, y - 68, 8, 14);
+  drawEllipse(x + 58, y - 68, 8, 14);
 }
+
+
+function drawEllipse(centerX, centerY, width, height) {
+	
+  context.beginPath();
+  
+  context.moveTo(centerX, centerY - height/2);
+  
+  context.bezierCurveTo(
+    centerX + width/2, centerY - height/2,
+    centerX + width/2, centerY + height/2,
+    centerX, centerY + height/2);
+
+	context.bezierCurveTo(
+	centerX - width/2, centerY + height/2,
+	centerX - width/2, centerY - height/2,
+	centerX, centerY - height/2);
+ 
+	context.fillStyle = 'black';
+	context.fill();
+	context.closePath();	
+}
+
+
+
+
+
+
+
+
+
+
